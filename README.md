@@ -7,7 +7,7 @@ a prediction cache and a monitoring log.
 
 | Step | What happens | Redis commands |
 |------|--------------|----------------|
-| 1. Load features | data becomes one hash per user | `HSET`, `EXPIRE` |
+| 1. Load features | Data becomes one hash per user | `HSET`, `EXPIRE` |
 | 2. Serve and cache | Look up features, predict, cache the result with a TTL | `HGETALL`, `GET`, `SET ... EX` |
 | 3. Log and monitor | Every request goes to a stream; counters track cache hits | `XADD`, `INCR` |
 | 4. Compare | Cold vs. cached latency and the cache hit rate | (reads the counters) |
